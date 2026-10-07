@@ -1,0 +1,17 @@
+{
+  "S-01": {
+    "name": "Marina",
+    "aliases": [],
+    "role": "stakeholder"
+  },
+  "U-01": {
+    "name": "Jasmine",
+    "aliases": [],
+    "role": "user"
+  },
+  "U-02": {
+    "name": "Carlos",
+    "aliases": [],
+    "role": "user"
+  }
+}

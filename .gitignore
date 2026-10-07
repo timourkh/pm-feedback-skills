@@ -1,0 +1,11 @@
+# Real names live only in the private participant map. Never commit it.
+participants.private.json
+**/participants.private.json
+
+# Live feedback logs and raw transcripts belong to the product, not this repo.
+/feedback-log.csv
+/transcripts/
+
+# Local eval workspaces
+*-workspace/
+__pycache__/

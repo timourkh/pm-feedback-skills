@@ -1,0 +1,37 @@
+TeAmour bi-weekly demo — Sep 5, 2026 — build 1.4.0 (Scout)
+Auto-transcript. Speakers: Tee (product), Marina (co-founder / investor)
+
+[00:00] Marina: Hi! Sorry, I'm in the car, give me a second. Okay. How was your week?
+[00:12] Tee: Good, busy. Scout got approved on iOS on Wednesday, so this is the store build.
+[00:20] Marina: Congratulations. Okay, show me.
+[00:31] Tee: So I'm logged in as a candidate. This is the team screen, these are my three wingmen. Scout already talked to two of them.
+[01:05] Marina: Okay. And how do I add a new friend to the team? I'm looking and I don't see it.
+[01:14] Tee: It's under the plus, top right.
+[01:18] Marina: Hm. It should be easier to add friends. That's the whole point, no? The team.
+[01:26] Tee: Noted.
+[01:40] Tee: So here's what Scout proposed after interviewing Alex, my wingman. Three prospects.
+[01:58] Marina: These all sound the same. "Loves travel, values honesty." Everybody says that. It feels generic.
+[02:10] Tee: The interview is short right now, five questions.
+[02:15] Marina: Mm.
+[02:40] Tee: And this is the match card.
+[02:44] Marina: Oh, this I like. The card is clean, I see the photo, I see who suggested her, the reason. This is very clear. Don't touch it.
+[03:05] Marina: You know what could be fun? A leaderboard for wingmen. Who made the most matches.
+[03:12] Tee: Like gamification.
+[03:15] Marina: Yes... actually, no. That would be weird, people competing over their friends' love life. Forget it, forget I said that.
+[03:30] Tee: Honestly, I think onboarding is too long now. Seven screens.
+[03:36] Marina: Is the Scout thing going to be free? Or is it in the subscription?
+[03:41] Tee: Still deciding.
+[03:44] Marina: Because I would pay for it, but I'm not normal user. People will ask.
+[04:10] Tee: Let me show notifications. So I got a message from a match, I opened it...
+[04:21] Marina: The red number is still there. On the chat icon. You read it already.
+[04:26] Tee: Huh. Yeah, it should clear.
+[04:30] Marina: That will drive people crazy. I hate when apps do that.
+[04:52] Marina: Last time there was a typo on the paywall, "subscribtion".
+[04:57] Tee: Fixed in this build. See?
+[05:00] Marina: Good, good.
+[05:20] Marina: Going back to the Scout suggestions. Really, they need to feel personal. If my wingman said I love hiking, I want to see why this person, not the same three phrases. Otherwise why do I need Scout.
+[05:41] Tee: Agreed. More interview questions, or use more of what the wingman says.
+[05:48] Marina: You decide how. I just know it's generic now.
+[06:10] Marina: Overall, looks great. Really. Good progress.
+[06:15] Tee: Thanks. Same time in two weeks?
+[06:18] Marina: Yes. I have to go, I'm at the school.

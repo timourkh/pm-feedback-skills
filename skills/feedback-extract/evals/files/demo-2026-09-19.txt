@@ -1,0 +1,19 @@
+TeAmour bi-weekly demo — Sep 19, 2026 — build 1.4.2
+Auto-transcript. Speakers as labeled by the meeting tool: Tee, Mar, Dmitri (guest, angel investor, invited by Marina)
+
+[00:00] Mar: Tee, this is Dmitri, I told you about him. He invests in consumer apps.
+[00:06] Dmitri: Hi. Marina said you have something interesting.
+[00:10] Tee: Thanks for joining. Quick tour then.
+[00:40] Mar: Did you make adding friends easier? Last time I said.
+[00:44] Tee: Not yet, it's in the backlog.
+[00:47] Mar: Because still, I look for it and I don't see it. Still hard to add friends.
+[01:20] Dmitri: What's the retention like? Week one?
+[01:24] Tee: Too early to say, we're small.
+[01:30] Dmitri: Okay. As a user, the first screen, I don't understand what makes this different from Hinge. It says "date with your friends' help" but I'd want to see it, not read it.
+[01:50] Mar: That's a good point.
+[02:30] Tee: Here's the new Scout interview, eight questions now.
+[02:41] Mar: Better. The suggestions sound more like the person. Much better than last time.
+[03:05] Dmitri: The Scout part is the interesting part. I'd lead with it.
+[03:20] Dmitri: One thing, when the wingman gets the Scout interview request, it's a push notification with no context. I wouldn't open that. Who is asking me what?
+[03:35] Mar: The red number on the chat is gone now, good.
+[04:00] Dmitri: Okay, I've seen enough for today. Send me the deck.

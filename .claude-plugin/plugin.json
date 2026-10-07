@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "pm-feedback",
+  "version": "0.1.0",
+  "description": "Product feedback pipeline for a PM: capture feedback from demos and user tests into an anonymized log, then triage it, write stories, and break them into tickets. v0.1 ships the capture step (feedback-extract).",
+  "author": {
+    "name": "Timour Khamnayev",
+    "email": "timour@tkthrive.io"
+  },
+  "skills": [
+    "./skills/feedback-extract"
+  ]
+}

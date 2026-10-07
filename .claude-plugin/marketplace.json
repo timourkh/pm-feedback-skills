@@ -1,0 +1,16 @@
+{
+  "name": "tkthrive-pm-skills",
+  "description": "Claude skills for product-team workflows, built and tested by Timour Khamnayev (T.K. Thrive).",
+  "owner": {
+    "name": "Timour Khamnayev",
+    "email": "timour@tkthrive.io"
+  },
+  "plugins": [
+    {
+      "name": "pm-feedback",
+      "source": "./",
+      "description": "Capture feedback from demos and user tests into an anonymized, triage-ready log.",
+      "version": "0.1.0"
+    }
+  ]
+}

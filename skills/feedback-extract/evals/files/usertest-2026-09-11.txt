@@ -1,0 +1,43 @@
+TeAmour moderated user test — Sep 11, 2026 — build 1.4.1
+Two participants, back to back, same script. Moderator: Tee. Notes include observer comments in [brackets].
+
+=== Session A — Jasmine ===
+Tee: Thanks for doing this. Please think out loud. Task one: create your account.
+Jasmine: Okay, phone number... code came in. Easy.
+Tee: Task two: invite a friend to be your wingman.
+Jasmine: Um. Where... is it in settings? No. Profile? [scrolls profile for ~40 seconds] I genuinely can't find it.
+Tee: Take your time.
+Jasmine: Oh, the little plus at the top. That's tiny. I thought that was for adding photos.
+Tee: Would you prefer a bigger button?
+Jasmine: Uh, sure, I guess.
+Tee: Who would you invite?
+Jasmine: Probably my best friend Dana, she's brutally honest. Dana Whitfield, she'd love this.
+Tee: Task three: look at what Scout suggested.
+Jasmine: Wait, am I the one being matched, or am I the wingman here? The screen says "your team" but I don't know which side I'm on.
+Tee: You're the candidate.
+Jasmine: It should say that somewhere.
+Jasmine: The suggestions are okay. One thing: as a Muslim woman I'd want my wingmen to know they should only suggest people who share that. Can I tell Scout that somewhere?
+Tee: Not yet.
+Jasmine: Then I'd have to explain it to every friend, which is awkward.
+Jasmine: The match card is nice though. I like seeing who suggested the person.
+Tee: Last task: open a chat.
+Jasmine: Easy. Done.
+
+=== Session B — Carlos ===
+Tee: Task one: create your account.
+Carlos: Number... waiting... no code. [waits 90 seconds] Resend. Still nothing.
+Tee: Try once more.
+Carlos: Nothing. I'd delete the app here, honestly.
+[Moderator logged Carlos in with a test account to continue.]
+Tee: Task two: invite a friend to be your wingman.
+Carlos: [taps the Matches tab, back, Matches tab again, then Chat tab, then back] ...
+Carlos: Okay found it, the plus.
+[Carlos did not comment on the detour.]
+Tee: Task three: look at what Scout suggested.
+Carlos: Why are there only three? I'd want to scroll.
+Carlos: And honestly these read like the same template. "Loves travel."
+Tee: Last task: open a chat.
+Carlos: Done. Fast, nice.
+Tee: Anything else?
+Carlos: My sister would use this. She's been through a rough divorce and doesn't trust the apps.
+Tee: Thanks, that's it.
