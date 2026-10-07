@@ -9,8 +9,8 @@
     {
       "name": "pm-feedback",
       "source": "./",
-      "description": "Capture feedback from demos and user tests into an anonymized, triage-ready log.",
-      "version": "0.1.0"
+      "description": "Capture feedback from demos, user tests and prospect research into one anonymized, triage-ready log.",
+      "version": "0.2.0"
     }
   ]
 }

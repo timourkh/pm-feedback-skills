@@ -1,15 +1,18 @@
 {
   "skill_name": "feedback-extract",
-  "notes": "All transcripts are synthetic, written for testing. Names in them are fictional. seed-log.csv / seed-map.json hold the reference answer for evals 1 and 2 and the starting state for eval 3.",
+  "notes": "All transcripts and notes are synthetic, written for testing. Names in them are fictional. seed-log.csv / seed-map.json are a v0.1-format log (no captured_by column) holding the reference answer for evals 1 and 2; evals 3 and 4 start from them, which also tests the --migrate upgrade.",
   "evals": [
     {
       "id": 1,
       "name": "stakeholder-demo-traps",
       "prompt": "ok here's the transcript from today's demo with Marina (Sep 5, build 1.4.0). can you pull the feedback out and log it? log is feedback-log.csv in the working folder, starting fresh",
       "expected_output": "About 5 rows: invites (with a clarification question), Scout feels generic (one row), unread badge bug, match card praise, Scout pricing question. Not logged: leaderboard idea she withdrew, Tee's onboarding remark, the already-fixed paywall typo, 'looks great'.",
-      "files": ["evals/files/demo-2026-09-05.txt"],
+      "files": [
+        "evals/files/demo-2026-09-05.txt"
+      ],
       "expectations": [
         "A feedback log CSV was written whose header matches the schema column order",
+        "Every row has a non-empty captured_by value",
         "No row's paraphrase, evidence or needs_clarification contains the names Marina or Alex",
         "The add-friends/invite feedback is logged with a non-empty needs_clarification question instead of a chosen solution",
         "The 'Scout suggestions feel generic' concern appears as exactly one row even though Marina raised it twice",
@@ -26,7 +29,9 @@
       "name": "user-test-privacy-and-observed",
       "prompt": "Ran two moderated user tests on Sep 11 (build 1.4.1), transcript attached. Log the feedback into feedback-log.csv — new log.",
       "expected_output": "About 9 rows across two users with U- pseudonyms. Separate invite-friction rows per user, Carlos's silent detour marked observed, verification failure as a blocker bug. No names, no religion, no sister's divorce in the log. The moderator's leading 'bigger button' question not treated as a genuine request.",
-      "files": ["evals/files/usertest-2026-09-11.txt"],
+      "files": [
+        "evals/files/usertest-2026-09-11.txt"
+      ],
       "expectations": [
         "Invite-finding friction is logged as two separate rows, one for each participant",
         "Carlos's unspoken tab detour is logged with basis 'observed'",
@@ -36,25 +41,55 @@
         "The participant's sister's divorce does not appear anywhere in the log",
         "The 'bigger button' answer is either not logged as a request or explicitly noted as prompted by the moderator",
         "Confusion about being the candidate vs a wingman is logged",
-        "Both participants are pseudonymized with U- labels (user role), not S- labels"
+        "Both participants are pseudonymized with U- labels (user role), not S- labels",
+        "Every row has a non-empty captured_by value"
       ]
     },
     {
       "id": 3,
       "name": "follow-up-demo-existing-log",
       "prompt": "Demo #2 from Sep 19 (build 1.4.2), Marina brought an investor along. Append the feedback to our existing log — feedback-log.csv and participants.private.json are in the folder.",
-      "expected_output": "Rows appended from FB-0015 onward; the 14 existing rows untouched. 'Mar' recognised as Marina (S-01) via alias or by asking; Dmitri becomes S-02. Repeat invites complaint logged as a new row. Retention question and the confirmed badge fix not logged as product feedback.",
-      "files": ["evals/files/demo-2026-09-19.txt", "evals/files/seed-log.csv", "evals/files/seed-map.json"],
+      "expected_output": "Rows appended from FB-0015 onward; the v0.1 log migrated to v2 with the 14 existing rows' values unchanged. 'Mar' recognised as Marina (S-01) via alias or by asking; Dmitri becomes S-02. Repeat invites complaint logged as a new row. Retention question and the confirmed badge fix not logged as product feedback.",
+      "files": [
+        "evals/files/demo-2026-09-19.txt",
+        "evals/files/seed-log.csv",
+        "evals/files/seed-map.json"
+      ],
       "setup": "Copy seed-log.csv to feedback-log.csv and seed-map.json to participants.private.json in the run directory before starting.",
       "expectations": [
-        "The 14 pre-existing rows are unchanged and new rows start at FB-0015",
+        "The log was upgraded to the v2 header (with captured_by) and the 14 pre-existing rows keep all their original values; new rows start at FB-0015",
         "Items from speaker 'Mar' are attributed to S-01 (Marina), not to a new label; or the reply asks the user whether Mar is Marina before logging",
         "Dmitri is logged under a new stakeholder pseudonym and his name appears in no text field",
         "The repeated add-friends complaint is logged as a new row for this session rather than merged into the Sep 5 row",
         "Dmitri's week-one retention question is not logged as product feedback",
         "The now-cleared unread badge is not logged as a bug",
         "The push notification for the Scout interview request lacking context is logged",
-        "The improved Scout suggestions are logged as praise"
+        "The improved Scout suggestions are logged as praise",
+        "Every new row has a non-empty captured_by value"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "gtm-prospect-notes-teammate",
+      "prompt": "Nadia (our GTM lead) ran two prospect calls on Friday Sep 25, her notes are attached. Log them into our existing feedback log — feedback-log.csv and participants.private.json are in the folder.",
+      "expected_output": "Log migrated to v2, then ~7-8 rows from prospect-research captured by Nadia, participants as P- labels. The friends-won't-bother objection as one demand row; headline/differentiation confusion in positioning; prototype invite trouble under invites (comparable with the testers' rows). Not logged: Rachel's age and divorce history, names, Jordan's polite 'sounds cool' after a pitch as demand, Nadia's own suggestion, the waitlist A/B aggregate as a participant row.",
+      "files": [
+        "evals/files/prospect-calls-2026-09-25.md",
+        "evals/files/seed-log.csv",
+        "evals/files/seed-map.json"
+      ],
+      "setup": "Copy seed-log.csv to feedback-log.csv and seed-map.json to participants.private.json in the run directory before starting.",
+      "expectations": [
+        "The log was upgraded to the v2 header and the 14 pre-existing rows keep their original values",
+        "Both interviewees are logged with P- labels (prospect role), not U- or S-",
+        "Every new row has session_type prospect-research and a captured_by value identifying Nadia/the GTM lead, not the person who asked to log it",
+        "The 'would my friends really do this' objection is logged once (though raised twice), with type demand and severity_hint major or blocker",
+        "The confusion about how it differs from Hinge / the landing-page headline is logged with area positioning",
+        "Jordan's 'yeah, sounds cool, I'd try it' after a 3-minute pitch is not logged as a demand signal, or is explicitly marked as pitched/weak evidence",
+        "Nadia's own suggestion to lead with the vouching/safety angle is not logged as participant feedback",
+        "The prototype trouble finding how to add a friend is logged with area invites",
+        "The log contains neither the interviewees' names (Rachel, Jordan) nor Rachel's age or divorce history",
+        "The waitlist A/B result is not logged as an individual participant's feedback, and the reply says how it was handled"
       ]
     }
   ]

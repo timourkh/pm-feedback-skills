@@ -1,6 +1,6 @@
 {
   "skill_name": "feedback-extract",
-  "description": "Pull product feedback out of a raw stakeholder-demo or user-testing session (transcript, recording notes, or rough notes) and append it to the running feedback log, anonymized and tagged by app area, type and severity. Use this whenever the user hands over a demo, user test, usability session, customer call or co-founder/investor walkthrough and wants the feedback captured, logged, extracted or \"processed\" \u2014 even if they just say \"here's today's demo, log it\" or \"pull the feedback out of this call\". It is the first step of the feedback \u2192 triage \u2192 stories \u2192 tickets chain. Do not use it to summarize a meeting, write user stories directly, analyze trends across sessions, or process transcripts that aren't product feedback (sales calls, interviews, standups).",
+  "description": "Pull product and market feedback out of a raw session \u2014 stakeholder demo, user/usability test, or GTM prospect research (demand interviews, message or landing-page tests, waitlist follow-ups) \u2014 given as a transcript, meeting notes or rough notes, and append it to the team's shared feedback log, anonymized and tagged by area, type and severity. Use this whenever someone hands over such a session (their own or a teammate's) and wants the feedback captured, logged, extracted or \"processed\" \u2014 even if they just say \"here's today's demo, log it\" or \"log Nadia's prospect calls\". It is the first step of the feedback \u2192 triage \u2192 stories \u2192 tickets chain. Do not use it to summarize a meeting, write user stories or tickets, analyze trends across already-logged sessions, write interview scripts or surveys, or process transcripts that aren't feedback (sales calls, job interviews, standups).",
   "results": [
     {
       "query": "here's the transcript from today's demo with my cofounder, pull out the feedback and add it to our feedback log:\n\nTee: so this is the team screen\nMarina: how do I add a friend? I don't see it\nTee: under the plus\nMarina: should be easier. also the scout picks all sound the same\nMarina: the match card is nice, don't touch it",
@@ -76,6 +76,22 @@
     },
     {
       "query": "feedback from the TestFlight group came in over whatsapp, pasted below. add it to the running feedback log\n\n[Sam] app crashed when I opened a match from the notification\n[Priya] love the match card\n[Sam] also the invite button is tiny\n[Leo] can't log in, code never arrives",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "triggers": 3,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "Nadia did 3 demand interviews with waitlist people yesterday, her notes are below. get the feedback into the log\n\n- P1: loves the vouching idea, would pay if friends commit\n- P2: doesn't see why not just use Hinge\n- P3: worried friends will judge her picks",
+      "should_trigger": true,
+      "trigger_rate": 1.0,
+      "triggers": 3,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "log the feedback from this landing-page message test follow-up call:\nProspect: honestly 'date with your friends' help' sounded like a group chat app\nProspect: the second headline about friends knowing your type is better\nProspect: would my friends need to download it too?",
       "should_trigger": true,
       "trigger_rate": 1.0,
       "triggers": 3,
@@ -161,11 +177,27 @@
       "triggers": 0,
       "runs": 3,
       "pass": true
+    },
+    {
+      "query": "write me a 20-minute demand interview script Nadia can use with waitlist prospects next week",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
+    },
+    {
+      "query": "turn Nadia's research findings into a one-page GTM memo for our investor update:\n- prospects get the concept fast once wingmen are explained\n- main objection: friends too busy\n- variant B headline converting better",
+      "should_trigger": false,
+      "trigger_rate": 0.0,
+      "triggers": 0,
+      "runs": 3,
+      "pass": true
     }
   ],
   "summary": {
-    "total": 20,
-    "passed": 20,
+    "total": 24,
+    "passed": 24,
     "failed": 0
   }
 }

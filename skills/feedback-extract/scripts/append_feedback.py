@@ -7,7 +7,10 @@ session summary.
 
 Usage:
   python append_feedback.py --items items.json --log feedback-log.csv \
-      --map participants.private.json [--dry-run]
+      --map participants.private.json [--dry-run] [--migrate]
+
+--migrate upgrades a log written by v0.1 (no captured_by column) in place,
+keeping every existing row and leaving captured_by blank for them.
 """
 import argparse
 import csv
@@ -19,15 +22,16 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 COLUMNS = [
-    "id", "session_date", "session_type", "build", "source_ref", "participant",
+    "id", "session_date", "session_type", "build", "source_ref", "captured_by", "participant",
     "area", "type", "basis", "severity_hint", "paraphrase", "evidence",
     "needs_clarification", "status", "logged_at",
 ]
-SESSION_TYPES = {"stakeholder-demo", "user-test"}
-TYPES = {"bug", "friction", "request", "question", "praise"}
+COLUMNS_V1 = [c for c in COLUMNS if c != "captured_by"]
+SESSION_TYPES = {"stakeholder-demo", "user-test", "prospect-research"}
+TYPES = {"bug", "friction", "request", "question", "demand", "praise"}
 BASES = {"stated", "observed"}
 SEVERITIES = {"blocker", "major", "minor", "none"}
-ROLES = {"stakeholder": "S", "user": "U"}
+ROLES = {"stakeholder": "S", "user": "U", "prospect": "P"}
 TEXT_FIELDS = ("paraphrase", "evidence", "needs_clarification")
 EVIDENCE_WORD_LIMIT = 25
 
@@ -93,6 +97,8 @@ def main():
     ap.add_argument("--log", required=True, type=Path)
     ap.add_argument("--map", required=True, type=Path)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--migrate", action="store_true",
+                    help="upgrade a v0.1 log (no captured_by column) before appending")
     args = ap.parse_args()
 
     payload = json.loads(args.items.read_text(encoding="utf-8"))
@@ -105,16 +111,27 @@ def main():
         errors.append("session.date must be YYYY-MM-DD")
     if session.get("type") not in SESSION_TYPES:
         errors.append(f"session.type must be one of {sorted(SESSION_TYPES)}")
+    if not (session.get("captured_by") or "").strip():
+        errors.append("session.captured_by is empty: use the handle of whoever ran the session, or 'unknown'")
     if not items:
         errors.append("no items to log")
 
     existing = []
+    migrate_needed = False
     if args.log.exists():
         with args.log.open(newline="", encoding="utf-8") as f:
             reader = csv.DictReader(f)
-            if reader.fieldnames and reader.fieldnames != COLUMNS:
-                errors.append(f"log columns don't match schema: {reader.fieldnames}")
             existing = list(reader)
+            header = reader.fieldnames
+        if header == COLUMNS_V1:
+            if args.migrate:
+                migrate_needed = True
+                for r in existing:
+                    r["captured_by"] = ""
+            else:
+                errors.append("log is in the v0.1 format (no captured_by column); rerun with --migrate to upgrade it, existing rows are kept")
+        elif header and header != COLUMNS:
+            errors.append(f"log columns don't match schema: {header}")
 
     pmap = load_map(args.map)
     new_people = []
@@ -143,7 +160,10 @@ def main():
         name = (it.get("participant") or "").strip()
         label = find_label(pmap, name) if name else None
         if label and pmap[label]["role"] != it.get("role"):
-            errors.append(f"item {i}: {label} is a {pmap[label]['role']} in the map but item says {it.get('role')}")
+            if pmap[label]["role"] == "prospect" and it.get("role") == "user":
+                warnings.append(f"item {i}: {label} was a prospect and is now giving feedback as a user; keeping the label {label}")
+            else:
+                errors.append(f"item {i}: {label} is a {pmap[label]['role']} in the map but item says {it.get('role')}")
         for field, allowed in (("area", areas), ("type", TYPES), ("basis", BASES), ("severity_hint", SEVERITIES)):
             if it.get(field) not in allowed:
                 errors.append(f"item {i}: {field}={it.get(field)!r} not in {sorted(allowed)}")
@@ -161,6 +181,7 @@ def main():
             "session_type": session.get("type", ""),
             "build": session.get("build", ""),
             "source_ref": session.get("source_ref", ""),
+            "captured_by": (session.get("captured_by") or "").strip(),
             "participant": label or "",
             "area": it.get("area", ""),
             "type": it.get("type", ""),
@@ -183,17 +204,29 @@ def main():
         sys.exit(1)
 
     if not args.dry_run:
-        new_file = not args.log.exists()
         args.log.parent.mkdir(parents=True, exist_ok=True)
-        with args.log.open("a", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=COLUMNS)
-            if new_file:
+        if migrate_needed:
+            # Rewrite the whole file once in the v2 column order, old rows first.
+            tmp = args.log.with_suffix(args.log.suffix + ".tmp")
+            with tmp.open("w", newline="", encoding="utf-8") as f:
+                w = csv.DictWriter(f, fieldnames=COLUMNS)
                 w.writeheader()
-            w.writerows(rows)
+                w.writerows(existing)
+                w.writerows(rows)
+            tmp.replace(args.log)
+        else:
+            new_file = not args.log.exists()
+            with args.log.open("a", newline="", encoding="utf-8") as f:
+                w = csv.DictWriter(f, fieldnames=COLUMNS)
+                if new_file:
+                    w.writeheader()
+                w.writerows(rows)
         args.map.write_text(json.dumps(pmap, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     verb = "Would log" if args.dry_run else "Logged"
-    print(f"{verb} {len(rows)} items ({rows[0]['id']}–{rows[-1]['id']}) from {session['type']} on {session['date']}.")
+    if migrate_needed:
+        print(f"{'Would migrate' if args.dry_run else 'Migrated'} the log to the v2 format: {len(existing)} existing rows kept, captured_by left blank for them.")
+    print(f"{verb} {len(rows)} items ({rows[0]['id']}–{rows[-1]['id']}) from {session['type']} on {session['date']}, captured by {session['captured_by']}.")
     if new_people:
         print("New participants:", ", ".join(f"{l} ({pmap[l]['role']})" for l in new_people))
     print("By type:", dict(Counter(r["type"] for r in rows)))

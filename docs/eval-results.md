@@ -1,6 +1,65 @@
 # feedback-extract: eval results
 
-Run on 2026-10-07 with Claude Opus 5.5. All transcripts are synthetic and written for testing; the names in them are fictional. Raw outputs from every run (the log each run produced plus its reply to the user) are in `docs/eval-runs/`.
+Run on 2026-10-07 with Claude Opus 5.5. All transcripts and notes are synthetic and written for testing; the names in them are fictional. Raw outputs from every run (the log each run produced plus its reply to the user) are in `docs/eval-runs/`.
+
+## v0.2: team version (iteration 3)
+
+v0.2 extends the log from one person to a team of three: builder PM, UX and GTM. It adds three things:
+
+- **Prospect research** as a session type, with `P-` pseudonyms, a `demand` feedback type and a `positioning` area.
+- **A `captured_by` column**, with in-place migration of v0.1 logs.
+- **Wording that no longer assumes the person logging ran the session.**
+
+**New test: a GTM teammate's notes.** The GTM lead's bullet notes from two prospect calls are logged into the existing 14-row v0.1 log by someone else. The notes are deliberately low-fidelity. The planted traps:
+
+- a prospect's age and divorce history,
+- an objection repeated twice,
+- a polite "sounds cool, I'd try it" after a 3-minute pitch,
+- the interviewer's own suggestion,
+- prototype trouble finding the invite control, which is the same problem testers hit,
+- an aggregate waitlist A/B result.
+
+| Assertion | With skill | Without skill |
+|---|---|---|
+| Log upgraded to v2, old rows unchanged | ✓ | ✗ (left in v0.1 format) |
+| Interviewees get `P-` prospect labels | ✓ | ✓ |
+| Session type `prospect-research`, captured by the GTM lead | ✓ | ✗ (invented `prospect-interview`; no capturer recorded) |
+| Repeated objection is one row, type `demand`, major or blocker | ✓ | ✗ (invented type `concern`) |
+| Hinge and headline confusion filed under `positioning` | ✓ | ✓ |
+| Pitched "sounds cool" not logged as demand, or marked weak | ✓ (left out) | ✓ (logged, marked weak) |
+| Interviewer's own suggestion not logged | ✓ | ✓ |
+| Prototype invite trouble filed under `invites` | ✓ | ✓ |
+| No names, age or divorce history | ✓ | ✓ |
+| Waitlist A/B not logged as a person's feedback; reply explains | ✓ | ✓ |
+| **Total** | **10/10** | **6/10** |
+
+This shows the team case. Without the skill, the GTM teammate's session is reasonably well judged but lands in its own dialect: its own session type, two invented feedback types (`concern`, `signal`), no record of who captured it, and the old log shape. Triage can't line its rows up with the UX and demo rows. With the skill, the prospect's struggle to find the invite control lands in `invites`, next to the same struggle from three testers and the co-founder. That's the cross-source connection the log exists for.
+
+**Regression.** The three original fixtures were re-run against v0.2, with a new assertion that every row records who captured it. Evals 3 and 4 also exercise the migration from a v0.1 log.
+
+| Test | v0.2 with skill |
+|---|---|
+| Stakeholder demo | 11/11 |
+| User test | 10/10 |
+| Follow-up demo, v0.1 log migrated | 9/9 |
+| GTM teammate's notes | 10/10 |
+| **Total** | **40/40** |
+
+**Triggering.** The set grew to 24 queries:
+
+- **New should-fire queries:** a teammate's demand-interview notes, and a landing-page message-test follow-up.
+- **New near-misses:** write a demand interview script, and turn research findings into a GTM memo.
+
+Each query ran 3 times, sequentially: **72/72 correct**. The skill fired on all 36 should-fire runs and on none of the 36 near-miss runs.
+
+**Observations for the next iteration:**
+
+- **More demand rows in user tests.** With the new `demand` type, the user-test run also logged two weak, secondhand demand remarks: who a tester would invite, and "my sister would use this." They are logged honestly with severity `none`, so triage can weigh them. A next iteration should decide whether secondhand demand belongs in the log at all, and test it.
+- **A fixture date error.** The baseline run noticed that "Fri Sep 26" is a Saturday; the skill run didn't. The fixture now says Sep 25.
+
+---
+
+# v0.1 results (iterations 1–2)
 
 ## Method
 

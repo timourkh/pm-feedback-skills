@@ -1,22 +1,98 @@
 [
-  {"query": "here's the transcript from today's demo with my cofounder, pull out the feedback and add it to our feedback log:\n\nTee: so this is the team screen\nMarina: how do I add a friend? I don't see it\nTee: under the plus\nMarina: should be easier. also the scout picks all sound the same\nMarina: the match card is nice, don't touch it", "should_trigger": true},
-  {"query": "just ran a usability test on onboarding, raw notes below. capture what the tester said into the feedback log pls\n\n- typed phone number, code took 2 min to arrive, almost gave up\n- didn't understand 'wingman' on screen 3, asked me what it meant\n- liked the photo picker, 'super quick'\n- tapped skip on permissions without reading", "should_trigger": true},
-  {"query": "Otter transcript of my investor walkthrough. I want every piece of product feedback she gave recorded, anonymized like last time.\n\n[00:10] Ana: The first screen doesn't tell me why this is different from Hinge.\n[01:02] Ana: Scout is the interesting part, honestly lead with it.\n[02:15] Ana: When my friend gets the Scout request there's no context in the push. I wouldn't open it.\n[03:00] Ana: Anyway, how's fundraising going?", "should_trigger": true},
-  {"query": "process this customer walkthrough and log the feedback:\nCustomer: the matching screen is confusing, I don't know who suggested this guy\nCustomer: the chat is fast though\nCustomer: why only three suggestions? I want more\nPM: noted", "should_trigger": true},
-  {"query": "my rough notes from watching two friends use the app at dinner: 'ana couldn't find invite (looked in settings), joe said scout picks felt random, both liked the match card, joe's verification code never came'. log these as feedback entries", "should_trigger": true},
-  {"query": "extract the issues and requests from this beta tester session into feedback-log.csv:\n\nTester 3: the badge on chat doesn't go away after I read stuff\nTester 3: I'd love dark mode\nTester 3: wait which one am I, the candidate or the wingman?\nTester 3: otherwise it's smooth", "should_trigger": true},
-  {"query": "demo went ok I think. what did elena actually flag? put it in the log so triage picks it up next week.\n\nElena: the paywall still says subscribtion\nTee: fixed in this build\nElena: ok good. the onboarding feels long\nElena: and I still can't find how to invite friends, I said this last time", "should_trigger": true},
-  {"query": "I ran a guerrilla test at a coffee shop, here's what the 4 people said, capture them as feedback:\n1) 'cute idea, but why would my friends do this for me'\n2) couldn't figure out how to add a wingman, gave up after a minute\n3) 'the scout questions were fun'\n4) asked if it's free", "should_trigger": true},
-  {"query": "zoom transcript of the stakeholder review for build 1.5 — need the feedback extracted and tagged by area:\n\nDmitri: the push for the scout interview has no context\nMarina: suggestions sound more personal now, much better\nDmitri: retention numbers?\nTee: too early", "should_trigger": true},
-  {"query": "feedback from the TestFlight group came in over whatsapp, pasted below. add it to the running feedback log\n\n[Sam] app crashed when I opened a match from the notification\n[Priya] love the match card\n[Sam] also the invite button is tiny\n[Leo] can't log in, code never arrives", "should_trigger": true},
-  {"query": "summarize this meeting transcript for me in 5 bullets, it's from our weekly standup:\nTee: shipped scout fix\nVikas: working on the invite flow\nTee: next demo is friday\nVikas: blocked on the SMS provider", "should_trigger": false},
-  {"query": "these feedback items got promoted in triage, turn them into user stories with acceptance criteria:\n- invite control is hard to find (4 mentions)\n- Scout suggestions feel generic (3 mentions)", "should_trigger": false},
-  {"query": "here's our feedback log export, tell me what's trending across all sessions since September and what should go in the backlog:\nFB-0001 invites friction\nFB-0006 invites friction\nFB-0011 invites friction\nFB-0002 scout friction\nFB-0013 scout friction", "should_trigger": false},
-  {"query": "transcript of my sales call with a law firm managing partner below, draft a follow-up email that recaps next steps:\nPartner: we'd want a pilot with two attorneys\nMe: we can start in November\nPartner: send pricing", "should_trigger": false},
-  {"query": "write a short story for our blog about how TeAmour was born, use this bit from a demo for color: 'Marina: these all sound the same. Everybody says loves travel.'", "should_trigger": false},
-  {"query": "I got feedback on my resume from a recruiter, here are her comments, help me revise it:\n- summary too long\n- quantify the eBay work\n- drop the 2004 role", "should_trigger": false},
-  {"query": "transcript of a job interview I did, what did I do well and badly?\nInterviewer: tell me about a product you killed\nMe: at Tymbl we killed the desktop app after we saw usage...", "should_trigger": false},
-  {"query": "write me a 6-question survey I can send to beta testers to collect feedback on the Scout feature", "should_trigger": false},
-  {"query": "the app store reviews are in, write polite replies to these 2 negative ones:\n1★ 'code never arrived, useless'\n2★ 'couldn't figure out how to invite my friends'", "should_trigger": false},
-  {"query": "split this approved story into engineering tickets for the next sprint: 'As a candidate, I can find the invite control from the team screen so I can add wingmen without help.'", "should_trigger": false}
+ {
+  "query": "here's the transcript from today's demo with my cofounder, pull out the feedback and add it to our feedback log:\n\nTee: so this is the team screen\nMarina: how do I add a friend? I don't see it\nTee: under the plus\nMarina: should be easier. also the scout picks all sound the same\nMarina: the match card is nice, don't touch it",
+  "should_trigger": true
+ },
+ {
+  "query": "just ran a usability test on onboarding, raw notes below. capture what the tester said into the feedback log pls\n\n- typed phone number, code took 2 min to arrive, almost gave up\n- didn't understand 'wingman' on screen 3, asked me what it meant\n- liked the photo picker, 'super quick'\n- tapped skip on permissions without reading",
+  "should_trigger": true
+ },
+ {
+  "query": "Otter transcript of my investor walkthrough. I want every piece of product feedback she gave recorded, anonymized like last time.\n\n[00:10] Ana: The first screen doesn't tell me why this is different from Hinge.\n[01:02] Ana: Scout is the interesting part, honestly lead with it.\n[02:15] Ana: When my friend gets the Scout request there's no context in the push. I wouldn't open it.\n[03:00] Ana: Anyway, how's fundraising going?",
+  "should_trigger": true
+ },
+ {
+  "query": "process this customer walkthrough and log the feedback:\nCustomer: the matching screen is confusing, I don't know who suggested this guy\nCustomer: the chat is fast though\nCustomer: why only three suggestions? I want more\nPM: noted",
+  "should_trigger": true
+ },
+ {
+  "query": "my rough notes from watching two friends use the app at dinner: 'ana couldn't find invite (looked in settings), joe said scout picks felt random, both liked the match card, joe's verification code never came'. log these as feedback entries",
+  "should_trigger": true
+ },
+ {
+  "query": "extract the issues and requests from this beta tester session into feedback-log.csv:\n\nTester 3: the badge on chat doesn't go away after I read stuff\nTester 3: I'd love dark mode\nTester 3: wait which one am I, the candidate or the wingman?\nTester 3: otherwise it's smooth",
+  "should_trigger": true
+ },
+ {
+  "query": "demo went ok I think. what did elena actually flag? put it in the log so triage picks it up next week.\n\nElena: the paywall still says subscribtion\nTee: fixed in this build\nElena: ok good. the onboarding feels long\nElena: and I still can't find how to invite friends, I said this last time",
+  "should_trigger": true
+ },
+ {
+  "query": "I ran a guerrilla test at a coffee shop, here's what the 4 people said, capture them as feedback:\n1) 'cute idea, but why would my friends do this for me'\n2) couldn't figure out how to add a wingman, gave up after a minute\n3) 'the scout questions were fun'\n4) asked if it's free",
+  "should_trigger": true
+ },
+ {
+  "query": "zoom transcript of the stakeholder review for build 1.5 — need the feedback extracted and tagged by area:\n\nDmitri: the push for the scout interview has no context\nMarina: suggestions sound more personal now, much better\nDmitri: retention numbers?\nTee: too early",
+  "should_trigger": true
+ },
+ {
+  "query": "feedback from the TestFlight group came in over whatsapp, pasted below. add it to the running feedback log\n\n[Sam] app crashed when I opened a match from the notification\n[Priya] love the match card\n[Sam] also the invite button is tiny\n[Leo] can't log in, code never arrives",
+  "should_trigger": true
+ },
+ {
+  "query": "Nadia did 3 demand interviews with waitlist people yesterday, her notes are below. get the feedback into the log\n\n- P1: loves the vouching idea, would pay if friends commit\n- P2: doesn't see why not just use Hinge\n- P3: worried friends will judge her picks",
+  "should_trigger": true
+ },
+ {
+  "query": "log the feedback from this landing-page message test follow-up call:\nProspect: honestly 'date with your friends' help' sounded like a group chat app\nProspect: the second headline about friends knowing your type is better\nProspect: would my friends need to download it too?",
+  "should_trigger": true
+ },
+ {
+  "query": "summarize this meeting transcript for me in 5 bullets, it's from our weekly standup:\nTee: shipped scout fix\nVikas: working on the invite flow\nTee: next demo is friday\nVikas: blocked on the SMS provider",
+  "should_trigger": false
+ },
+ {
+  "query": "these feedback items got promoted in triage, turn them into user stories with acceptance criteria:\n- invite control is hard to find (4 mentions)\n- Scout suggestions feel generic (3 mentions)",
+  "should_trigger": false
+ },
+ {
+  "query": "here's our feedback log export, tell me what's trending across all sessions since September and what should go in the backlog:\nFB-0001 invites friction\nFB-0006 invites friction\nFB-0011 invites friction\nFB-0002 scout friction\nFB-0013 scout friction",
+  "should_trigger": false
+ },
+ {
+  "query": "transcript of my sales call with a law firm managing partner below, draft a follow-up email that recaps next steps:\nPartner: we'd want a pilot with two attorneys\nMe: we can start in November\nPartner: send pricing",
+  "should_trigger": false
+ },
+ {
+  "query": "write a short story for our blog about how TeAmour was born, use this bit from a demo for color: 'Marina: these all sound the same. Everybody says loves travel.'",
+  "should_trigger": false
+ },
+ {
+  "query": "I got feedback on my resume from a recruiter, here are her comments, help me revise it:\n- summary too long\n- quantify the eBay work\n- drop the 2004 role",
+  "should_trigger": false
+ },
+ {
+  "query": "transcript of a job interview I did, what did I do well and badly?\nInterviewer: tell me about a product you killed\nMe: at Tymbl we killed the desktop app after we saw usage...",
+  "should_trigger": false
+ },
+ {
+  "query": "write me a 6-question survey I can send to beta testers to collect feedback on the Scout feature",
+  "should_trigger": false
+ },
+ {
+  "query": "the app store reviews are in, write polite replies to these 2 negative ones:\n1★ 'code never arrived, useless'\n2★ 'couldn't figure out how to invite my friends'",
+  "should_trigger": false
+ },
+ {
+  "query": "split this approved story into engineering tickets for the next sprint: 'As a candidate, I can find the invite control from the team screen so I can add wingmen without help.'",
+  "should_trigger": false
+ },
+ {
+  "query": "write me a 20-minute demand interview script Nadia can use with waitlist prospects next week",
+  "should_trigger": false
+ },
+ {
+  "query": "turn Nadia's research findings into a one-page GTM memo for our investor update:\n- prospects get the concept fast once wingmen are explained\n- main objection: friends too busy\n- variant B headline converting better",
+  "should_trigger": false
+ }
 ]

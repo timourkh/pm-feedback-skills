@@ -18,8 +18,10 @@ One area per feedback row. Keep this list short and stable: triage counts recurr
 | `monetization` | Paywall, subscriptions, consumables, anything about what is free vs paid. |
 | `safety-privacy` | Blocking, reporting, visibility of personal data, consent. |
 | `performance` | Speed, loading, crashes not tied to a single area. |
+| `positioning` | The concept and value proposition: what makes it different, who it's for, messaging and first impressions, plus surfaces outside the app (landing page, waitlist, store listing, ads). Most prospect-research feedback lands here. |
 | `other` | Anything that doesn't fit yet. Mention these in the session summary. |
 
 ## Change history
 
 - 2026-10-07: initial draft.
+- 2026-10-07: added `positioning` for GTM prospect research and concept-level reactions.
